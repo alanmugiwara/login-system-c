@@ -72,12 +72,15 @@ void alterar_senha () {
 }
 
 void logar () {
-    char user_login[100], pass_login[100];
+    char user_login[100], pass_login[100]; // Novas variáveis para receber o input para logar
+    char user_txt[100], pas_txt[100]; // Variáveis para ler os dados do .txt
     printf("=======================\nLogin:\n=======================\n"); // Assim como o "%d" define que um tipo "inteiro" será lido
     printf("\nNome de usuário: ");
     scanf("%s", user_login);
     printf("Senha de usuário: ");
     scanf("%s", pass_login);
+
+    FILE *data_backup = fopen("users.txt", "r");
     
 
     // Verificação das credenciais se fore iguais a "0" que indica equivalência
