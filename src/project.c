@@ -41,8 +41,8 @@ void cadastrar() {
     
     char user[100], pass[100];
 
-    FILE *data_backup; // FILE (arquivo) um ponteiro para gerenciar operações com arquivos. data_back é uma variável setada
-    data_backup = fopen("users.txt", "a"); // Atribui-se a varável a função "fopen" para abrir o .txt e pargumento "a" de "append" cria o .txt em leitura/escrita recusrsivas.
+    FILE *data_backup; // FILE estrutura dedados pra gerenciar operações com arquivos. data_back é uma variável setada pra criação do arquivo
+    data_backup = fopen("users.txt", "a"); // Atribui-se a varável a função "fopen" para abrir o .txt e pargumento "a" de "append" cria o .txt em leitura/escrita recusrsivas
     
 if (data_backup == NULL) {
     printf("Erro ao abrir o arquivo.\n");
@@ -73,22 +73,31 @@ void alterar_senha () {
 
 void logar () {
     char user_login[100], pass_login[100]; // Novas variáveis para receber o input para logar
-    char user_txt[100], pas_txt[100]; // Variáveis para ler os dados do .txt
+    char user_txt[100], pass_txt[100]; // Variáveis para ler os dados do .txt
+    int login_check = 0; // Definição com "tipagem inteira" da variável que será o true/false da verificação de login
     printf("=======================\nLogin:\n=======================\n"); // Assim como o "%d" define que um tipo "inteiro" será lido
     printf("\nNome de usuário: ");
     scanf("%s", user_login);
     printf("Senha de usuário: ");
     scanf("%s", pass_login);
 
-    FILE *data_backup = fopen("users.txt", "r");
-    
+    FILE *data_backup = fopen("users.txt", "r"); // Aqui a função fopen está acessando o txt em modo leitura "r" (read)
 
-    // Verificação das credenciais se fore iguais a "0" que indica equivalência
-    if (strcmp(user_login, user_destino) == 0 && strcmp(pass_login, pass_destino) == 0) {
-        printf("\nUsuário >>%s<< logado com sucesso!\n", user_login);
-    } else {
+     // Váriável pra verificar o login, definina usando "fail-fast" boa prática defensiva
+
+    // A função "strcmp" (StreamComparation) compara as vaiáveis que lêem o txt. Se resultar em "0" elas são iguis e o resultado é "true"
+    while (fscanf(data_backup, "%s %s", user_txt, pass_txt) == 2) { 
+        // O "fscanf" está puxando as variáveis de login e enquanto receber 2 valores vai rodar a condição
+        if (strcmp(user_login, user_txt) == 0 && strcmp(pass_login, pass_txt) == 0) 
+        printf("\nUsuário >>%s<< logado com sucesso!\n", user_login); // %s% pra formatar e "user_login" pra chamar a variável no print
+        login_check = 1; // Atribui um novo valor "true" a variável "login_check"
+        break; // Encerra o loop criado pelo while
+    }
+    if (login_check == 0) { // Em C, obrigatóriamente condicionais "if, else", etc. deve ficar entrep parênteses
         printf("Usuário ou senha incorretos.\n");
     }
+
+    fclose(data_backup); // Fecha a variável que recebe os parâmetros de abertura do txt. Logo fecha o documento.
 }
 
 void excluir_usuario () {
