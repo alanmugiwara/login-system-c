@@ -135,7 +135,7 @@ int main () {
 
         case 5:
             printf("Sair\n");
-            break;
+            return 0;
 
         default:
             printf("Opção inválida\n");
