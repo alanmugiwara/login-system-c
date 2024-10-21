@@ -116,30 +116,30 @@ int main () {
     // Possibilidades pro usuário 
     switch(user_input) {
         case 1: 
-        cadastrar();
-        break;
-        // O "break" é passar pro próximo bloco de código assim que este for executado.
-        // Sem o "break" pode haver looping
+            cadastrar();
+            break;
+            // O "break" é passar pro próximo bloco de código assim que este for executado.
+            // Sem o "break" pode haver looping
 
         case 2:
-        printf("Alterar senha: \n");
-        break;
+            printf("Alterar senha: \n");
+            break;
 
         case 3:
-        logar ();
-        break;
+            logar ();
+            break;
 
         case 4:
-        printf("Excluir usuário: \n");
-        break;
+            printf("Excluir usuário: \n");
+            break;
 
         case 5:
-        printf("Sair\n");
-        break;
+            printf("Sair\n");
+            break;
 
         default:
-        printf("Opção inválida\n");
-        break;
+            printf("Opção inválida\n");
+            break;
 
     }
     return(0);
