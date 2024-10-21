@@ -100,8 +100,8 @@ void logar () {
         if (strcmp(user_login, user_txt) == 0 && strcmp(pass_login, pass_txt) == 0) {
             printf("\nUsuário >>%s<< logado com sucesso!\n", user_login); // %s% pra formatar e "user_login" pra chamar a variável no print
             login_check = 1; // Atribui um novo valor "true" a variável "login_check"
-            break;
-        } // Encerra o loop criado pelo while
+            break; // Encerra o loop criado pelo while
+        }
     }
     if (login_check == 0) { // Em C, obrigatóriamente condicionais "if, else", etc. deve ficar entrep parênteses
         printf("Usuário ou senha incorretos.\n");
