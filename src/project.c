@@ -101,6 +101,8 @@ int main () {
     lang_format(); // Chama a função de formatar o odioma
     int user_input; // Define a variável que recebe os inputs o usuário
 
+    do {
+
     // Exibe menu de opções
     printf("==============================\nDigite um valor correspondente\nPara executar uma das opções\n==============================\n\n");
     printf("Opção 1 - Cadastrar\n");
@@ -142,5 +144,8 @@ int main () {
             break;
 
     }
+
+    } while (user_input != 5)
+     
     return(0);
 }
