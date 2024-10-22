@@ -122,12 +122,12 @@ int main () {
     do {
 
     // Exibe menu de opções
-    printf("==============================\nDigite um valor correspondente\nPara executar uma das opções\n==============================\n\n");
-    printf("Opção 1 - Cadastrar\n");
-    printf("Opção 2 - Alterar senha\n");
-    printf("Opção 3 - Logar\n");
-    printf("Opção 4 - Excluir usuário\n");
-    printf("Opção 5 - Sair\n\n");
+    printf("==============================\nDigite um valor correspondente\nPara executar uma das opções\n==============================\n\n"
+            "Opção 1 - Cadastrar\n"
+            "Opção 2 - Alterar senha\n"
+            "Opção 3 - Logar\n"
+            "Opção 4 - Excluir usuário\n"
+            "Opção 5 - Sair\n\n");
 
     // "%d" define que "scanf' vai receber aepenas valores inteiros
     // "&" e obrigatório antes de uma variável, ele seta a mesma na memória
