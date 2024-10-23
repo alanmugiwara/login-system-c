@@ -18,6 +18,7 @@
 
 #include <stdio.h> // Importa a biblioteca "Standart Input Output Header(cabecalho)"
 #include <locale.h> // Importa a biblioteca para Formatação de idiomas
+#include <stdlib.h> // Importa a biblioteca Standartt Librabry. Necessária para trabalhar com idiomas, especialmente strings e caracteres.
 #include <string.h> // Importa a biblioteca para manipulação de strings
 
 // Variáveis globais para armazenar dados do último usuário cadastrado
@@ -27,7 +28,8 @@ char user_destino[100], pass_destino[100];
 void lang_format() { // "void" declara a função como tipo vazio
 
 #ifdef _WIN32
-    setlocale(LC_ALL, "Portuguese"); // Para Windows
+    setlocale(LC_ALL, "pt_BR.UTF-8"); // Para Windows
+    system("chcp 65001 > NULL"); // chcp (Change Code Page) força a execução do código em UTF-8. "> NULL" oculta a exibição do "chcp 65001" no programa
 #else
     setlocale(LC_ALL, "pt_BR.UTF-8"); // Para Linux e macOS
 #endif
