@@ -7,13 +7,13 @@
 
 // PROJETO
 
-// 1. Possuir Menu de opções
-// 2. Cadastrar novo usuário
-// 3. Alterar senha do usuário
-// 4. Realizar o login
-// 5. Exclusão de usuário
-// 6. Opção de saída
-// 7. Necessário salvar os usuários em TXT.
+// 1. Possuir Menu de opções                [OK]
+// 2. Cadastrar novo usuário                [OK]
+// 3. Alterar senha do usuário              [X]
+// 4. Realizar o login                      [OK]
+// 5. Exclusão de usuário                   [X]
+// 6. Opção de saída                        [OK]
+// 7. Necessário salvar os usuários em TXT  [OK]
 
 #include <stdio.h> // Importa a biblioteca "Standart Input Output Header(cabecalho)"
 #include <locale.h> // Importa a biblioteca para Formatação de idiomas
@@ -63,7 +63,55 @@ void cadastrar() {
 }
                                      
 void alterar_senha () {
-    
+    char user[100], new_pass[100];
+    char linha[200], usuario_existente[100], senha_existente[100];
+    int user_found = 0;
+
+    FILE *data_backup; // FILE estrutura dedados pra gerenciar operações com arquivos. data_back é uma variável setada pra criação do arquivo
+    data_backup = fopen("users.txt", "r+"); // Atribui-se à variável a função "fopen" para abrir o arquivo "users.txt". 
+    if (data_backup == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return;
+    }
+
+    printf("=======================\nAlterar senha:\n=======================\n");
+    printf("\nNome de usuário: ");
+    scanf("%s", user);
+    printf("Nova senha: ");
+    scanf("%s", new_pass);
+    // Cria um arquivo temporário para armazenar dados alterados
+    FILE *temp_file = fopen("temp.txt", "w");
+    if (temp_file == NULL) {
+        printf("Erro ao criar arquivo temporário.\n");
+        fclose(data_backup);
+        return;
+    }
+
+    // Lê o arquivo linha por linha
+    while (fgets(linha, sizeof(linha), data_backup)) {
+        sscanf(linha, "%s %s", usuario_existente, senha_existente);
+        if (strcmp(usuario_existente, user) == 0) {
+            // Usuário encontrado, escreve nova senha
+            fprintf(temp_file, "%s %s\n", user, new_pass);
+            user_found = 1; // Marca que o usuário foi encontrado
+        } else {
+            // Copia a linha original para o arquivo temporário
+            fputs(linha, temp_file);
+        }
+    }
+
+    if (user_found) {
+        printf("Senha alterada com sucesso para o usuário >>%s<<!\n", user);
+    } else {
+        printf("Usuário não encontrado.\n");
+    }
+
+    fclose(data_backup); // Encerra a interação com o .txt
+    fclose(temp_file); // Encerra o arquivo temporário
+
+    // Substitui o arquivo original pelo temporário
+    remove("users.txt"); // Remove o arquivo original
+    rename("temp.txt", "users.txt"); // Renomeia o temporário para o original
 }
 
 void logar () {
@@ -77,23 +125,6 @@ void logar () {
     scanf("%s", pass_login);
 
     FILE *data_backup = fopen("users.txt", "r"); // Aqui a função fopen está acessando o txt em modo leitura "r" (read)
-
-    //---------------------------
-    // int estaCorreto = 0; // FALSE
-    
-    // do {
-    //     fscanf(data_backup, "%s %s", user_txt, pass_txt)
-
-    //     if (strcmp(user_login, user_txt) == 0 && strcmp(pass_login, pass_txt) == 0) {
-    //         if (strcmp(user_login, user_txt) == 0 && strcmp(pass_login, pass_txt) == 0) 
-    //         printf("\nUsuário >>%s<< logado com sucesso!\n", user_login); // %s% pra formatar e "user_login" pra chamar a variável no print
-    //         login_check = 1; // Atribui um novo valor "true" a variável "login_check"
-    //         break; // Encerra o loop criado pelo while
-    //     }
-
-    // } while (estaCorreto == 0);
-
-    //---------------------------
 
     // A função "strcmp" (StreamComparation) compara as vaiáveis que lêem o txt. Se resultar em "0" elas são iguis e o resultado é "true"
     while (fscanf(data_backup, "%s %s", user_txt, pass_txt) == 2) {         // O "fscanf" está puxando as variáveis de login e enquanto receber 2 valores vai rodar a condição
@@ -111,7 +142,53 @@ void logar () {
 }
 
 void excluir_usuario () {
-    
+    char user[100];
+    char linha[200], user_found[100], pass_found[100];
+    int user_verify = 0;
+
+    // Abre o arquivo original para leitura
+    FILE *data_backup = fopen("users.txt", "r");
+    if (data_backup == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return;
+    }
+
+    // Cria um arquivo temporário para armazenar dados
+    FILE *temp_file = fopen("temp.txt", "w");
+    if (temp_file == NULL) {
+        printf("Erro ao criar arquivo temporário.\n");
+        fclose(data_backup);
+        return;
+    }
+
+    printf("=======================\nExcluir usuário:\n=======================\n");
+    printf("\nNome de usuário a excluir: ");
+    scanf("%s", user);
+
+    // Lê o arquivo original linha por linha
+    while (fgets(linha, sizeof(linha), data_backup)) {
+        sscanf(linha, "%s %s", user_found, pass_found);
+        if (strcmp(user_found, user) != 0) {
+            // Se o usuário não for o que queremos excluir, copia para o temporário
+            fputs(linha, temp_file);
+        } else {
+            user_verify = 1; // Marca que o usuário foi encontrado
+        }
+    }
+
+    if (user_found) {
+        printf("Usuário >>%s<< excluído com sucesso!\n", user);
+    } else {
+        printf("Usuário não encontrado.\n");
+    }
+
+    fclose(data_backup); // Encerra a interação com o .txt
+    fclose(temp_file); // Encerra o arquivo temporário
+
+    // Substitui o arquivo original pelo temporário
+    remove("users.txt"); // Remove o arquivo original
+    rename("temp.txt", "users.txt"); // Renomeia o temporário para o original
+
 }
 
 int main () {
@@ -142,15 +219,15 @@ int main () {
             // Sem o "break" pode haver looping
 
         case 2:
-            printf("Alterar senha: \n");
+            alterar_senha("Alterar senha: \n");
             break;
 
         case 3:
-            logar ();
+            logar();
             break;
 
         case 4:
-            printf("Excluir usuário: \n");
+            excluir_usuario("Excluir usuário: \n");
             break;
 
         case 5:
