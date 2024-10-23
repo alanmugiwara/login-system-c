@@ -219,7 +219,7 @@ int main () {
             // Sem o "break" pode haver looping
 
         case 2:
-            alterar_senha("Alterar senha: \n");
+            alterar_senha();
             break;
 
         case 3:
@@ -227,7 +227,7 @@ int main () {
             break;
 
         case 4:
-            excluir_usuario("Excluir usuário: \n");
+            excluir_usuario();
             break;
 
         case 5:
