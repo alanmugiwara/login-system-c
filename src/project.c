@@ -9,11 +9,12 @@
 
 // 1. Possuir Menu de opções                [OK]
 // 2. Cadastrar novo usuário                [OK]
-// 3. Alterar senha do usuário              [X]
+// 3. Alterar senha do usuário              [OK]
 // 4. Realizar o login                      [OK]
-// 5. Exclusão de usuário                   [X]
+// 5. Exclusão de usuário                   [OK]
 // 6. Opção de saída                        [OK]
 // 7. Necessário salvar os usuários em TXT  [OK]
+// 8. Cadastro de cliente na função login   [X]
 
 #include <stdio.h> // Importa a biblioteca "Standart Input Output Header(cabecalho)"
 #include <locale.h> // Importa a biblioteca para Formatação de idiomas
