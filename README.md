@@ -34,6 +34,10 @@ Ele ainda está em desenvolvimento e algumas funcionalidades ainda não foram im
      gcc login-system-c.c -o login-system-c
      ```
 
+# Demonstração
+![Demonsraoção](https://github.com/alanmugiwara/alanmugiwara.github.io/blob/main/img/gif_menu_c.gif?raw=true)
+
+
 3. **Execute o Programa:**
    - Após a compilação, execute o programa com o comando abaixo ou apenas execute o .exe gerado:
 
@@ -67,5 +71,6 @@ Para dúvidas, sugestões ou problemas, entre em contato com Álan Cruz:
 <div>
 <a href="https://instagram.com/alancruz_tec" target="_blank"><img loading="lazy" src="https://img.shields.io/badge/-Instagram-%23E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram"></a>
 <a href="mailto:contato@alancruz.tec.br"><img loading="lazy" src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="E-mail"></a>
-<a href="https://linkedin.com/in/alansilvadacruz" target="_blank"><img loading="lazy" src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="Linkedin"></a>
+<a href="https://linkedin.com/in/alansilvadacruz" target="_blank"><img loading="lazy" src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="Linkedin">
+<a href="https://alancruz.tec.br" target="_blank"><img loading="lazy" src="https://img.shields.io/badge/-My%20Website-%230077B5?style=for-the-badge&logo=wordpress&logoColor=white" alt="Website"></a>
 </div>
