@@ -31,7 +31,7 @@ void lang_format() { // "void" declara a função como tipo vazio
     setlocale(LC_ALL, "pt_BR.UTF-8"); // Definição geral pra qualquer SO
 
 #ifdef _WIN32 // Para Windows
-    system("chcp 65001 > NULL"); //  chcp (Change Code Page) força a execução do código em UTF-8. "> NULL" oculta a exibição do "chcp 65001" no programa
+    system("chcp 65001 > NULL"); // chcp (Change Code Page) força a execução do código em UTF-8. "> NULL" oculta a exibição do "chcp 65001" no programa
 #endif
 }
 
@@ -53,21 +53,22 @@ void cadastrar() {
     scanf("%s", pass);
 
     // Copia os dados para as variáveis destino
-    strcpy(user_destino, user);
-    strcpy(pass_destino, pass);
+    strcpy(user_destino, user); // 'string copy' para copiar o conteúdo de uma string (user) para outra (user_destino)
+    strcpy(pass_destino, pass); // mesma regra acima diferindo apenas os argumentos
 
     // Escreve os dados no arquivo
-    fprintf(data_backup, "%s %s\n", user_destino, pass_destino); //"fprint" sempre pra "printar" em um arquivo de saída. %s, %s formata as duas variáveis em string
+    fprintf(data_backup, "%s %s\n", user_destino, pass_destino); //"fprint" sempre "printa" num arquivo de saída. %s, %s formata as duas variáveis em string
     fclose(data_backup); // Encerra a interação com o .txt
 
     printf("\nUsuário >>%s<< cadastrado com sucesso!\n", user);
 }
                                      
 void alterar_senha () {
-    char user[100], new_pass[100];
-    char linha[200], usuario_existente[100], senha_existente[100];
-    int user_found = 0;
-
+    char user[100], new_pass[100]; // Arrays para armazenar o nome do usuário e a nova senha.
+    char linha[200], usuario_existente[100], senha_existente[100]; // Arrays para armazenar linha do arquivo e dados de usuário e senha existentes.
+    int user_found = 0; // Aviso pra indicar se o usuário foi encontrado.
+    
+    // Declaração de ponteiro pro arquivo "users.txt", que será aberto em modo leitura e escrita.
     FILE *data_backup; // FILE estrutura dedados pra gerenciar operações com arquivos. data_back é uma variável setada pra criação do arquivo
     data_backup = fopen("users.txt", "r+"); // Atribui-se à variável a função "fopen" para abrir o arquivo "users.txt". 
     if (data_backup == NULL) {
@@ -75,6 +76,7 @@ void alterar_senha () {
         return;
     }
 
+    // Inouts pra Coletar o nome do usuário existente e a nova senha.
     printf("=======================\nAlterar senha:\n=======================\n");
     printf("\nNome de usuário: ");
     scanf("%s", user);
@@ -88,15 +90,19 @@ void alterar_senha () {
         return;
     }
 
-    // Lê o arquivo linha por linha
+    // Lê o arquivo salvo na variável "data_backup" linha por linha
     while (fgets(linha, sizeof(linha), data_backup)) {
+    // A função `fgets` lê até `sizeof(linha) - 1` caracteres do arquivo `data_backup` e armazena no array `linha`.
+    // O programa deve executar o bloco de código dentro do while enquanto a função fgets conseguir ler uma linha do 'data_backup' e colocá-la no array 'linha'.
+
+    // Ela lê até encontrar uma quebra de linha (`\n`) ou atingir o limite de caracteres do array.
         sscanf(linha, "%s %s", usuario_existente, senha_existente);
-        if (strcmp(usuario_existente, user) == 0) {
-            // Usuário encontrado, escreve nova senha
-            fprintf(temp_file, "%s %s\n", user, new_pass);
+        if (strcmp(usuario_existente, user) == 0) { // 'string compare' Compara o nome do usuário lido com o nome do usuário que será alterado.
+            
+            fprintf(temp_file, "%s %s\n", user, new_pass); // Usuário encontrado, escreve nova senha
             user_found = 1; // Marca que o usuário foi encontrado
         } else {
-            // Copia a linha original para o arquivo temporário
+            // Caso o usuário não seja o desejado, copia a linha original para o arquivo temporário.
             fputs(linha, temp_file);
         }
     }
