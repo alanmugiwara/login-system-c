@@ -18,20 +18,20 @@
 
 #include <stdio.h> // Importa a biblioteca "Standart Input Output Header(cabecalho)"
 #include <locale.h> // Importa a biblioteca para Formatação de idiomas
-#include <stdlib.h> // Importa a biblioteca Standartt Librabry. Necessária para trabalhar com idiomas, especialmente strings e caracteres.
+#include <stdlib.h> // Importa a biblioteca Standartt Librabry. Necessária para trabalhar com idiomas, especialmente strings e caracteres .
 #include <string.h> // Importa a biblioteca para manipulação de strings
 
 // Variáveis globais para armazenar dados do último usuário cadastrado
-char user_destino[100], pass_destino[100];
+char user_destino[100], pass_destino[100]; // "char"é uma tipagem que armazena apenas 1 caractere
+// É obrigatório definir um valor de "array" entre colchetes pra obter mais que isso
 
 // Função que define o idioma de entrada de dados
 void lang_format() { // "void" declara a função como tipo vazio
 
-#ifdef _WIN32
-    setlocale(LC_ALL, "pt_BR.UTF-8"); // Para Windows
-    system("chcp 65001 > NULL"); // chcp (Change Code Page) força a execução do código em UTF-8. "> NULL" oculta a exibição do "chcp 65001" no programa
-#else
-    setlocale(LC_ALL, "pt_BR.UTF-8"); // Para Linux e macOS
+    setlocale(LC_ALL, "pt_BR.UTF-8"); // Definição geral pra qualquer SO
+
+#ifdef _WIN32 // Para Windows
+    system("chcp 65001 > NULL"); //  chcp (Change Code Page) força a execução do código em UTF-8. "> NULL" oculta a exibição do "chcp 65001" no programa
 #endif
 }
 
@@ -39,14 +39,12 @@ void lang_format() { // "void" declara a função como tipo vazio
 
 // Funções da lógica do menu
 void cadastrar() {
-    // "char"é uma tipagem que armazena apenas 1 caractere
-    // É obrigatório definir um valor de "array" enre colchetes pra obter mais que isso
     
     char user[100], pass[100];
 
-    FILE *data_backup; // FILE estrutura dedados pra gerenciar operações com arquivos. data_back é uma variável setada pra criação do arquivo
+    FILE *data_backup; // FILE estrutura de dados pra gerenciar operações com arquivos. data_back é uma variável setada pra criação do arquivo
     data_backup = fopen("users.txt", "a"); // Atribui-se à variável a função "fopen" para abrir o arquivo "users.txt". 
-    // O argumento "a" (append) abre o arquivo para escrita, criando-o se não existir. O conteúdo existente não é apagado, e os novos dados são adicionados no final.
+    // O argumento "a" (append) abre o arquivo para escrita, criando-o se não existir. O conteúdo existente não é apagado, e os novos dados são adicionados ao final de cada linha.
 
     printf("=======================\nCadastrar novo usuário:\n=======================\n");
     printf("\nNome de usuário: ");
