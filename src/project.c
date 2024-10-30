@@ -113,8 +113,8 @@ void alterar_senha () {
         printf("Usuário não encontrado.\n");
     }
 
-    fclose(data_backup); // Encerra a interação com o .txt
-    fclose(temp_file); // Encerra o arquivo temporário
+    fclose(data_backup); // Encerra a interação com o .txt original
+    fclose(temp_file); // Encerra com  o arquivo temporário
 
     // Substitui o arquivo original pelo temporário
     remove("users.txt"); // Remove o arquivo original
@@ -124,7 +124,7 @@ void alterar_senha () {
 void logar () {
     char user_login[100], pass_login[100]; // Novas variáveis para receber o input para logar
     char user_txt[100], pass_txt[100]; // Variáveis para ler os dados do .txt
-    int login_check = 0; // Variável "tipaada como inteira". Será o true/false da verificação de login. Definida usando "fail-fast" boa prática defensiva
+    int login_check = 0; // Variável "tipada como inteira". Será o true/false da verificação de login. Definida usando "fail-fast" boa prática defensiva
     printf("=======================\nLogin:\n=======================\n"); // Assim como o "%d" define que um tipo "inteiro" será lido
     printf("\nNome de usuário: ");
     scanf("%s", user_login);
@@ -155,8 +155,9 @@ void excluir_usuario () {
 
     // Abre o arquivo original para leitura
     FILE *data_backup = fopen("users.txt", "r");
-    if (data_backup == NULL) {
-        printf("Erro ao abrir o arquivo.\n");
+    if (data_backup == NULL) { // Verifica se o arquivo original está vazio
+        printf("Erro ao abrir o arquivo.\n"); // Erro pro caso do arquivo  estar vazio
+
         return;
     }
 
@@ -200,7 +201,7 @@ void excluir_usuario () {
 
 int main () {
 
-    lang_format(); // Chama a função de formatar o odioma
+    lang_format(); // Chama a função de formatar o idioma
     int user_input; // Define a variável que recebe os inputs o usuário
 
     do {
