@@ -27,7 +27,6 @@ char user_destino[100], pass_destino[100]; // "char"é uma tipagem que armazena 
 
 // Função que define o idioma de entrada de dados
 void lang_format() { // "void" declara a função como tipo vazio
-
     setlocale(LC_ALL, "pt_BR.UTF-8"); // Definição geral pra qualquer SO
 
 #ifdef _WIN32 // Para Windows
@@ -138,6 +137,31 @@ void logar () {
         if (strcmp(user_login, user_txt) == 0 && strcmp(pass_login, pass_txt) == 0) {
             printf("\nUsuário >>%s<< logado com sucesso!\n", user_login); // %s% pra formatar e "user_login" pra chamar a variável no print
             login_check = 1; // Atribui um novo valor "true" a variável "login_check"
+
+            // Solicita dados pessoais após o login 
+            char nome[100], sexo_bl[10], email[100], telefone[100], cep[20];  // Variáveis para armazenar os dados do usuário
+            int idade[100]; // Variáveis para armazenar dados inteiros do usuário
+
+            printf("=======================\nCadastrar Perfil:\n=======================\n");
+            printf("\nNome completo");
+            scanf("%s", nome);
+            printf("\nIdade");
+            scanf("%s", idade);
+            printf("\nSexo biológico");
+            scanf("%s", sexo_bl);
+            printf("\nE-mail");
+            scanf("%s", email);
+            printf("\nTelefone");
+            scanf("%s", telefone);
+            printf("\nCEP");
+            scanf("%s", cep);
+
+            // Salva os dados de perfil no txt
+            FILE *profile_data = fopen("perfil.txt", "a"); //
+            fprintf(profile_data, "%s %d %s %s %s %s\n", nome, idade, sexo_bl, email, telefone, cep);
+            fclose(profile_data);
+
+            printf("\nPerfil cadastrado com sucesso!\n");
             break; // Encerra o loop criado pelo while
         }
     }
@@ -146,6 +170,7 @@ void logar () {
     }
 
     fclose(data_backup); // Fecha a variável que recebe os parâmetros de abertura do txt. Logo fecha o documento.
+
 }
 
 void excluir_usuario () {
