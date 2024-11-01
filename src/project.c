@@ -14,7 +14,7 @@
 // 5. Exclusão de usuário                   [OK]
 // 6. Opção de saída                        [OK]
 // 7. Necessário salvar os usuários em TXT  [OK]
-// 8. Cadastro de cliente na função login   [X]
+// 8. Cadastro de cliente na função login   [OK]
 
 #include <stdio.h> // Importa a biblioteca "Standart Input Output Header(cabecalho)"
 #include <locale.h> // Importa a biblioteca para Formatação de idiomas
