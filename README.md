@@ -1,3 +1,8 @@
+[![Generic badge](https://img.shields.io/badge/made%20with-C%20language-<COLOR>.svg)](https://shields.io/)
+[![Created Badge](https://badges.pufler.dev/created/alanmugiwara/login-system-c)](https://github.com/alanmugiwara)
+[![Updated Badge](https://badges.pufler.dev/updated/alanmugiwara/login-system-c)](https://github.com/alanmugiwara)
+[![Commits Badge](https://img.shields.io/github/commit-activity/m/alanmugiwara/login-system-c.svg?color=%4CAF50)](https://github.com/alanmugiwara/login-system-c)
+
 # Login System C
 
 Este projeto é um sistema de login simples escrito em C que permite cadastrar, alterar senha, realizar login e excluir usuários. Os dados dos usuários são salvos em um arquivo de texto.
