@@ -1,7 +1,15 @@
-[![Generic badge](https://img.shields.io/badge/made%20with-C%20language-<COLOR>.svg)](https://shields.io/)
-[![Created Badge](https://badges.pufler.dev/created/alanmugiwara/login-system-c)](https://github.com/alanmugiwara)
-[![Updated Badge](https://badges.pufler.dev/updated/alanmugiwara/login-system-c)](https://github.com/alanmugiwara)
-[![Commits Badge](https://img.shields.io/github/commit-activity/m/alanmugiwara/login-system-c.svg?color=%4CAF50)](https://github.com/alanmugiwara/login-system-c)
+[![made Language {generic badge}](https://img.shields.io/badge/Made%20with-C%20language-8A2BE2)](https://github.com/alanmugiwara)
+[![create date](https://badges.pufler.dev/created/alanmugiwara/login-system-c?color=8A2BE2)](https://github.com/alanmugiwara)
+[![last update date](https://badges.pufler.dev/Updated/alanmugiwara/login-system-c?color=8A2BE2)](https://github.com/alanmugiwara)
+[![Commits Badge](https://img.shields.io/github/commit-activity/m/alanmugiwara/login-system-c.svg?color=8A2BE2)](https://github.com/alanmugiwara)
+
+[![contributors](https://img.shields.io/github/contributors/alanmugiwara/login-system-c?color=8A2BE2)](https://github.com/alanmugiwara)
+[![issues counter](https://img.shields.io/github/issues/alanmugiwara/login-system-c?color=8A2BE2)](https://github.com/alanmugiwara)
+[![repo size](https://img.shields.io/github/repo-size/alanmugiwara/login-system-c?color=8A2BE2)](https://github.com/alanmugiwara)
+[![directory size](https://img.shields.io/github/directory-file-count/alanmugiwara/login-system-c?color=8A2BE2)](https://github.com/alanmugiwara)
+
+[![last release](https://img.shields.io/github/v/release/alanmugiwara/romkeepilson2)](https://github.com/alanmugiwara)
+[![downloads counter](https://img.shields.io/github/downloads/alanmugiwara/romkeepilson/total)](https://github.com/alanmugiwara)
 
 # Login System C
 
